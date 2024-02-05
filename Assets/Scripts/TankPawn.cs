@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class TankPawn : Pawn
 {
-    public float timer = 1;
+    public float timer = 1.0f;
     private float timeUntilNextEvent;
     // Start is called before the first frame update
    public override void Start()
     {
         base.Start();
+        timeUntilNextEvent = Time.time + timer;
        
     }
 
@@ -42,7 +43,12 @@ public class TankPawn : Pawn
 
     public override void Shoot()
     {
-        shooter.Shoot(shellPrefab, fireForce, damageDone, shellLifespan);
+        if (Time.time >= timeUntilNextEvent)
+        {
+            shooter.Shoot(shellPrefab, fireForce, damageDone, shellLifespan);
+            timeUntilNextEvent = Time.time + timer;
+        }
+        
     }
 
 }

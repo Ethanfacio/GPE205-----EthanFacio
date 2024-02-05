@@ -23,7 +23,7 @@ public abstract class Pawn : MonoBehaviour
     // varaiable for how long the bullets surive if they don't collide
     public float shellLifespan;
     // Variable for the rate of fire
-    public float fireRate;
+    public float secondsPerShot = 1;
     // Start is called before the fisrt frame update
     public virtual void Start()
     {

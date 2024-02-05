@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
     }
     public void Die(Pawn source)
     {
+        Destroy(gameObject);
         Debug.Log(source.name + " Destroyed " + gameObject.name);
     }
 }
